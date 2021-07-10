@@ -4,23 +4,28 @@ import s from "./ToDoList.module.css"
 
 
 
-const ToDoList = () => {
+const ToDoList = (props) => {
+
+    const notes = props.notePage.notes.map((p) => { return <Note key={p.id} text={p.text}/> })
+    console.log(notes)
+
     return(
         <div className={s.wrapper}>
             <strong>To Do List</strong> 
             <div>
                 <input type="text" placeholder="Введите текст"/> <button>Добавить</button>
             </div>
-            <Note />
+            <div>{ [...notes].reverse() }</div>
+            
         </div>
     )
 }
 
 
-const mapStateToProps = store => {
-    console.log(store)
+const mapStateToProps = state => {
+    console.log(state)
     return {
-        notes: store.notes,
+        notePage: state.notePage,
     }
 }
     

@@ -1,0 +1,23 @@
+.note{
+    display: grid;
+    grid-template-columns: 4fr 50px;
+    text-align: center;
+    border: 1px solid black;
+    margin: 10px;
+    background: white;
+}
+
+.note button{
+    border: none;
+    background: rgb(153, 153, 153);
+    transition: background .3s;
+}
+
+.note button:hover{
+    background: rgb(116, 116, 116);
+    cursor: pointer;
+}
+
+.note button:active{
+    background: rgb(136, 53, 53);
+}

@@ -2,9 +2,9 @@
 
 export const initialState = {
     notes: [
-        {id: 1, message:"Заметка 1"},
-        {id: 2, message:"Заметка 2"},
-        {id: 3, message:"Заметка 3"}
+        {id: 1, text:"Заметка 1"},
+        {id: 2, text:"Заметка 2"},
+        {id: 3, text:"Заметка 3"}
     ]
 }
 

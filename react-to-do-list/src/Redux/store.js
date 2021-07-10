@@ -2,7 +2,7 @@ import { combineReducers, createStore } from "redux";
 import noteReducer, { initialState } from "./note-reducer";
 
 let reducers = combineReducers({
-    notes: noteReducer
+    notePage: noteReducer
 });
 
 

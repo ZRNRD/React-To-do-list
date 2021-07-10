@@ -1,9 +1,9 @@
 import s from "./Note.module.css"
 
-const Note = () => {
+const Note = (props) => {
     return(
-        <div>
-            Note
+        <div className={s.note}>
+             <p>{props.text}</p> <button>X</button>
         </div>
     )
 }
