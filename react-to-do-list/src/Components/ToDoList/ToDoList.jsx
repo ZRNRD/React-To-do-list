@@ -1,4 +1,3 @@
-import { connect } from "react-redux";
 import Note from "../Note/Note";
 import s from "./ToDoList.module.css"
 
@@ -7,27 +6,37 @@ import s from "./ToDoList.module.css"
 const ToDoList = (props) => {
 
     const notes = props.notePage.notes.map((p) => { return <Note key={p.id} text={p.text}/> })
-    console.log(notes)
+
+    const changeInput = (e) => {
+        const text = e.target.value;
+        props.changeInput(text);
+        
+    };
+
+    const addNewNote = () => {
+        const newNote = {id: Date.now(), text: props.notePage.input};
+
+        props.addNewNote(newNote)
+    }
 
     return(
         <div className={s.wrapper}>
-            <strong>To Do List</strong> 
-            <div>
-                <input type="text" placeholder="Введите текст"/> <button>Добавить</button>
+            <h1 className={s.h1}>To Do List</h1>
+            <div className={s.input}>
+                <input 
+                    type="text" 
+                    value={props.notePage.input} 
+                    placeholder="Введите текст заметки"
+                    onChange={changeInput}
+                /> 
+                <button onClick={addNewNote}>Добавить</button>
             </div>
-            <div>{ [...notes].reverse() }</div>
+            <div className={s.notes}>{ [...notes].reverse() }</div>
             
         </div>
     )
 }
 
 
-const mapStateToProps = state => {
-    console.log(state)
-    return {
-        notePage: state.notePage,
-    }
-}
-    
 
-export default connect(mapStateToProps)(ToDoList);
+export default ToDoList;

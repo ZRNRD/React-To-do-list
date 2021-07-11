@@ -1,6 +1,12 @@
 .wrapper{
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 20px 30px 1fr;
-    height: 100vw;
+    grid-template-rows: 100px 30px 1fr;
+    
+    height: 100vh;
 }
+
+input{
+    width: 500px;
+}
+
