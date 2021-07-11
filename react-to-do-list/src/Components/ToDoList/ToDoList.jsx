@@ -5,7 +5,7 @@ import s from "./ToDoList.module.css"
 
 const ToDoList = (props) => {
 
-    const notes = props.notePage.notes.map((p) => { return <Note key={p.id} text={p.text}/> })
+    const notes = props.notePage.notes.map((p) => { return <Note key={p.id} id={p.id} text={p.text} deleteNote={props.deleteNote}/> })
 
     const changeInput = (e) => {
         const text = e.target.value;
@@ -14,9 +14,12 @@ const ToDoList = (props) => {
     };
 
     const addNewNote = () => {
-        const newNote = {id: Date.now(), text: props.notePage.input};
-
-        props.addNewNote(newNote)
+        
+        if(props.notePage.input) {
+            const newNote = {id: Date.now(), text: props.notePage.input};
+            props.addNewNote(newNote)
+        }
+        
     }
 
     return(

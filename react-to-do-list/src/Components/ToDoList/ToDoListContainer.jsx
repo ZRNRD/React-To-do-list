@@ -1,5 +1,5 @@
 import { connect } from "react-redux"
-import { addNewNoteAction, changeInputValueAction } from "../../Redux/note-reducer"
+import { addNewNoteAction, changeInputValueAction, deleteNoteAction } from "../../Redux/note-reducer"
 import ToDoList from "./ToDoList"
 
 const mapStateToProps = state => {
@@ -15,6 +15,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         addNewNote: (newNote) =>{
             dispatch(addNewNoteAction(newNote))
+        },
+        deleteNote: (noteId) => {
+            dispatch(deleteNoteAction(noteId))
         }
         
     }

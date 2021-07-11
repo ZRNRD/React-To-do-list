@@ -1,6 +1,7 @@
 const CHANGE_INPUT = "react-to-do-list/notes/CHANGE_INPUT";
 const ADD_NOTE = "react-to-do-list/notes/ADD_NOTE";
 const DELETE_NOTE = "react-to-do-list/notes/DELETE_NOTE";
+const EDIT_NOTE = "react-to-do-list/notes/DELETE_NOTE";
 
 
 export const initialState = {
@@ -9,7 +10,7 @@ export const initialState = {
         {id: 2, text:"Заметка 2"},
         {id: 3, text:"Заметка 3"}
     ],
-    input: "123"
+    input: ""
 }
 
 
@@ -31,6 +32,12 @@ const noteReducer = (state = initialState, action) => {
                 input: ""
             }
         }
+        case DELETE_NOTE: {
+            return {
+                ...state,
+                notes: state.notes.filter(p => p.id != action.noteId)
+            };
+        }
 
         default: return state;
     }
@@ -48,6 +55,12 @@ export const addNewNoteAction = (newNote) => {
     return {
       type: ADD_NOTE,
       newNote
+    };
+};
+export const deleteNoteAction = (noteId) => {
+    return {
+      type: DELETE_NOTE,
+      noteId
     };
 };
 
