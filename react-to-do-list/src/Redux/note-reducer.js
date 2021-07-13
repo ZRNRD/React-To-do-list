@@ -35,7 +35,7 @@ const noteReducer = (state = initialState, action) => {
         case DELETE_NOTE: {
             return {
                 ...state,
-                notes: state.notes.filter(p => p.id != action.noteId)
+                notes: state.notes.filter(p => p.id !== action.noteId)
             };
         }
 

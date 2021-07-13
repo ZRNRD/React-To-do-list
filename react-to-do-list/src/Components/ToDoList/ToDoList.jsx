@@ -5,7 +5,14 @@ import s from "./ToDoList.module.css"
 
 const ToDoList = (props) => {
 
-    const notes = props.notePage.notes.map((p) => { return <Note key={p.id} id={p.id} text={p.text} deleteNote={props.deleteNote}/> })
+    const notes = props.notePage.notes.map((p) => { 
+        return <Note key={p.id} 
+                     id={p.id} 
+                     text={p.text} 
+                     editMode={p.editMode} 
+                     deleteNote={props.deleteNote}
+                /> 
+    })
 
     const changeInput = (e) => {
         const text = e.target.value;

@@ -9,6 +9,11 @@
 }
 .note p{
     overflow: auto;
+    word-wrap:break-word;
+}
+.note textarea {
+    resize: none;
+    height: 100px;
 }
 
 .note button{
