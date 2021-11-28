@@ -5,7 +5,7 @@ const EDIT_NOTE = "react-to-do-list/notes/DELETE_NOTE";
 
 
 export const initialState = {
-    notes: [
+    notes: JSON.parse(localStorage.getItem("notes")) || [
         {id: 1, text:"Заметка 1"},
         {id: 2, text:"Заметка 2"},
         {id: 3, text:"Заметка 3"}
@@ -26,6 +26,7 @@ const noteReducer = (state = initialState, action) => {
         }
         case ADD_NOTE: {
             let newNote = action.newNote;
+            localStorage.setItem("notes", JSON.stringify([...state.notes, newNote]))
             return{
                 ...state,
                 notes:[...state.notes, newNote],
@@ -33,6 +34,7 @@ const noteReducer = (state = initialState, action) => {
             }
         }
         case DELETE_NOTE: {
+            localStorage.setItem("notes", JSON.stringify([...state.notes.filter(p => p.id !== action.noteId)]))
             return {
                 ...state,
                 notes: state.notes.filter(p => p.id !== action.noteId)

@@ -4,6 +4,7 @@ import ToDoListContainer from './Components/ToDoList/ToDoListContainer';
 import store from './Redux/store';
 
 function App() {
+  console.log(JSON.parse(localStorage.getItem("notes"))) //Удалить позже
   return (
     <Provider store={store}>
       <div className="app-wrapper">
