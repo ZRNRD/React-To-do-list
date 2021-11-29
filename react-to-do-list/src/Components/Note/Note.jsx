@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import s from "./Note.module.css"
 
 const Note = (props) => {
@@ -9,6 +9,7 @@ const Note = (props) => {
 
     const [editMode, changeEditMode] = useState(false);
     const [editedValue, changeEditValue] = useState(props.text);
+    
 
     return(
         <div className={s.note} onDoubleClick = {() => changeEditMode(true)}>
@@ -17,7 +18,10 @@ const Note = (props) => {
                 editMode === true 
                 ? <textarea autoFocus 
                             name="textarea" 
-                            onBlur = {() => {changeEditMode(false);}}
+                            onBlur = {() => {
+                                changeEditMode(false);
+                                props.editNote(props.id, editedValue)
+                            }}
                             onChange = {(e) => {changeEditValue(e.target.value)}}>{editedValue}</textarea> 
                 : <p>{editedValue}</p> 
              } 

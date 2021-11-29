@@ -11,6 +11,7 @@ const ToDoList = (props) => {
                      text={p.text} 
                      editMode={p.editMode} 
                      deleteNote={props.deleteNote}
+                     editNote={props.editNote}
                 /> 
     })
 

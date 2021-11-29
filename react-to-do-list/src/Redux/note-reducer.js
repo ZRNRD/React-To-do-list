@@ -1,7 +1,7 @@
 const CHANGE_INPUT = "react-to-do-list/notes/CHANGE_INPUT";
 const ADD_NOTE = "react-to-do-list/notes/ADD_NOTE";
 const DELETE_NOTE = "react-to-do-list/notes/DELETE_NOTE";
-const EDIT_NOTE = "react-to-do-list/notes/DELETE_NOTE";
+const EDIT_NOTE = "react-to-do-list/notes/EDIT_NOTE";
 
 
 export const initialState = {
@@ -40,6 +40,17 @@ const noteReducer = (state = initialState, action) => {
                 notes: state.notes.filter(p => p.id !== action.noteId)
             };
         }
+        case EDIT_NOTE: {
+            let newNotes = state.notes.map((note)=>{
+                if(note.id === action.noteId){note.text = action.newText}
+                return note
+            })
+            localStorage.setItem("notes", JSON.stringify([...newNotes]))
+            return {
+                ...state,
+                notes: newNotes
+            };
+        }
 
         default: return state;
     }
@@ -63,6 +74,13 @@ export const deleteNoteAction = (noteId) => {
     return {
       type: DELETE_NOTE,
       noteId
+    };
+};
+export const editNoteAction = (noteId, newText) => {
+    return {
+      type: EDIT_NOTE,
+      noteId,
+      newText
     };
 };
 
