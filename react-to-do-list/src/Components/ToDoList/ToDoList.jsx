@@ -29,7 +29,12 @@ const ToDoList = (props) => {
         }
         
     }
-
+    const onKeyDownHandler = (e)=>{
+        if(e.keyCode === 13){
+            const newNote = {id: Date.now(), text: props.notePage.input};
+            props.addNewNote(newNote)
+        }
+    }
     return(
         <div className={s.wrapper}>
             <h1 className={s.h1}>To Do List</h1>
@@ -39,6 +44,7 @@ const ToDoList = (props) => {
                     value={props.notePage.input} 
                     placeholder="Введите текст заметки"
                     onChange={changeInput}
+                    onKeyDown={onKeyDownHandler}
                 /> 
                 <button onClick={addNewNote}>Добавить</button>
             </div>
