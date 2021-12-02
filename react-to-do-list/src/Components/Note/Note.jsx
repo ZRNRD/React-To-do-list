@@ -22,6 +22,14 @@ const Note = (props) => {
                                 changeEditMode(false);
                                 props.editNote(props.id, editedValue)
                             }}
+                            onKeyDown = {(e) => {
+                                if(e.keyCode === 13){
+                                    changeEditMode(false);
+                                    props.editNote(props.id, editedValue)
+                                }
+                            }
+
+                            }
                             onChange = {(e) => {changeEditValue(e.target.value)}}>{editedValue}</textarea> 
                 : <p>{editedValue}</p> 
              } 
